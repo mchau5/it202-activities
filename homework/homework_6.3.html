@@ -2,40 +2,34 @@
 <html>
     <head><title>Canvas Demo</title></head>
     <body>
-        <canvas id="canvas-demo" width="400" height="400">
+        <canvas id="canvas" width="400" height="400">
              This will be displayed if your browser doesn't
              support the canvas element. The closing tag is
              necessary.
         </canvas>
-		<canvas id="canvas-demo"></canvas>
-			
-		<script>
-				function myFunction{
+				
+				<script>
+				let c = document.querySelector("#canvas");
+				let ctx = c.getContext("2d");
+				const draw = () => {
 					ctx.beginPath();
-					ctx.moveTo(10, 10);// start at (10,10)
-					ctx.lineTo(110, 10);
-					ctx.moveTo(10, 20);// 10 pts below
-					ctx.lineTo(180, 20);
-					ctx.moveTo(10, 30);
-					ctx.lineTo(150, 30);
-					ctx.moveTo(10, 40);
-					ctx.lineTo(160, 40);
-					ctx.moveTo(10, 50);
-					ctx.lineTo(130, 50);
-					ctx.closePath();
-			}	
-			
-		</script>
-		<script>
-		var canvas = document.getElementById("canvas-demo");
-		var ctx = canvas.getContext("2d");
-		ctx.fillStyle = "#FF0000";
-		ctx.fillRect(0, 0, 400, 400);	
-		myFunction();
-			
-			
-		</script>			
+					canvas.style.background = "red";  // a valid CSS colour.
+					ctx.lineWidth = 20;
+					ctx.moveTo(0,200);
+					ctx.lineTo(20,10);
+					ctx.lineTo(100,100);
+					ctx.lineTo(180,10);
+					ctx.lineTo(200,200);
 
+
+					ctx.strokeStyle = "blue";
+					ctx.stroke();
+
+					ctx.endPath();
+				}
+				draw();
+			
+				</script>
 
 			
 			
