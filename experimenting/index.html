@@ -1,0 +1,42 @@
+
+<!doctype html>
+
+<html lang="en">
+ <head>
+	 <meta charset = "utf-8">
+	 <meta name= "viewport"
+				 content = "width-device-width">
+	 <title>testing</title>
+	 <link href="style.css" rel="stylesheet" type="text/css" />
+	  </head>
+<body>
+	
+	<!-- Include dexie.js -->
+	<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+	<script>
+	var db = new Dexie("MyFriendsDB");
+	db.version(1).stores({
+		friends: '++id,names,age'
+	});
+		
+		
+		db.friends.add(
+		{name: "Dave",
+		age:22,
+		hometown: "Washington DC"})
+		
+		
+		db.friends.where('age').equals(22).toArray()
+	</script>
+	
+	 
+	
+		</body>
+
+	
+	
+	
+	
+	
+
+</html>
