@@ -1,42 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+  </head>
+  <body>
 
-<!doctype html>
+    <canvas></canvas>
 
-<html lang="en">
- <head>
-	 <meta charset = "utf-8">
-	 <meta name= "viewport"
-				 content = "width-device-width">
-	 <title>testing</title>
-	 <link href="style.css" rel="stylesheet" type="text/css" />
-	  </head>
-<body>
-	
-	<!-- Include dexie.js -->
-	<script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
-	<script>
-	var db = new Dexie("MyFriendsDB");
-	db.version(1).stores({
-		friends: '++id,names,age'
-	});
-		
-		
-		db.friends.add(
-		{name: "Dave",
-		age:22,
-		hometown: "Washington DC"})
-		
-		
-		db.friends.where('age').equals(22).toArray()
-	</script>
-	
-	 
-	
-		</body>
 
-	
-	
-	
-	
-	
+    <script>
+      let colors = ["white","red","green","blue","black","orange","purple"];
+      let radii = [1,10];
+      
+      let c = document.querySelector("canvas");
+      c.width=500;
+      c.height=500;
+      let ctx = c.getContext("2d");
 
+
+
+      const drawFilledCircle = (x,y,color,radius) => {
+        ctx.beginPath();
+        ctx.arc(x,y,radius,0, Math.PI*2);
+        ctx.fillStyle = color;
+        ctx.closePath();
+        ctx.fill();
+
+      }
+
+
+      const draw = () => {
+
+        let color = colors[Math.floor(Math.random()*colors.length)];
+        let x = Math.floor(Math.random()*c.width);
+        let y = Math.floor(Math.random()*c.height);
+        let radius = radii[Math.floor(Math.random()*radii.length)];
+        drawFilledCircle(x, y, color, radius);
+
+        window.requestAnimationFrame(draw);
+      }
+
+      draw()
+
+
+
+
+
+
+      </script>
+
+  </body>
 </html>
